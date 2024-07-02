@@ -1,0 +1,28 @@
+#MoviePopularCards {
+  padding: 20px 0;
+  .MoviePopularCards {
+    .MoviePopularCardsHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background: #121010;
+      a {
+        color: white;
+        padding: 20px 0;
+      }
+      a:focus {
+        border-bottom: 2px solid orange;
+      }
+    }
+    .MoviePopularCardsBlock {
+      display: flex;
+      align-items: center;
+      overflow-x: scroll;
+      gap: 40px;
+      padding: 30px 0;
+    }
+    .MoviePopularCardsBlock::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

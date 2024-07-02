@@ -14,6 +14,6 @@ export function getMovie(path) {
         page: 1,
       },
     });
-    dispatch(getMovies(data));
+    dispatch(getMovies(data.results));
   };
 }
