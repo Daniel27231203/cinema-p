@@ -1,0 +1,21 @@
+.moviesCard {
+  img {
+    height: 300px;
+    border-radius: 10px;
+  }
+  h1 {
+    width: 100%;
+    height: 100px;
+    color: white;
+    font-size: 20px;
+  }
+  span {
+    color: white;
+  }
+  padding: 10px;
+}
+.moviesCard:hover {
+  box-shadow: 4px 2px 21px 7px rgba(217, 207, 207, 0.75);
+  -webkit-box-shadow: 4px 2px 21px 7px rgba(217, 207, 207, 0.75);
+  -moz-box-shadow: 4px 2px 21px 7px rgba(217, 207, 207, 0.75);
+}
