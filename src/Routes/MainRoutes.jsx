@@ -3,7 +3,7 @@ import Home from "../pages/Home/Home";
 import Movie from "../pages/Movie/Movie";
 import Serial from "../pages/Serial/Serial";
 import { Route, Routes } from "react-router-dom";
-import Cartoon from "@/pages/Cartoon/Cartoon";
+import Cartoon from "../pages/Cartoon/Cartoon";
 
 function MainRoutes() {
   const Public = [
