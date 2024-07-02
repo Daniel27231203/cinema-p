@@ -16,6 +16,7 @@
 
 button {
   cursor: pointer;
+  border: none;
 }
 
 a {
@@ -27,4 +28,8 @@ input {
 body {
   background: #000;
   font-family: "Montserrat";
+}
+
+.active {
+  background-color: yellowgreen;
 }
