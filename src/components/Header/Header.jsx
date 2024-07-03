@@ -46,6 +46,7 @@ const Header = () => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             height: "100vh",
+            borderImage: "fill 0 linear-gradient(#0003,#000)",
           }}
         >
           <div className="container">
