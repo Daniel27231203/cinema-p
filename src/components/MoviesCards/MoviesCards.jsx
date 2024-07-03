@@ -29,7 +29,7 @@ function MoviePopularCards(props) {
   };
 
   // ! states
-  const [newValidate, setNewValidate] = useState(false);
+  const [newValidate, setNewValidate] = useState(true);
   const [popValidate, setpopValidate] = useState(false);
   const [watchValidate, setwatchValidate] = useState(false);
   const [recValidate, setrecValidate] = useState(false);
