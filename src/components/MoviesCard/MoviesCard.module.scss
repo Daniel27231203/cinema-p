@@ -1,10 +1,17 @@
 .moviesCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 10px;
+  margin: 20px 5px;
   img {
     height: 300px;
     border-radius: 10px;
   }
   h1 {
-    width: 100%;
+    width: 180px;
     height: 100px;
     color: white;
     font-size: 20px;
@@ -13,6 +20,7 @@
     color: white;
   }
   padding: 10px;
+  transition: 0.5s;
 }
 .moviesCard:hover {
   box-shadow: 4px 2px 21px 7px rgba(217, 207, 207, 0.75);

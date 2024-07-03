@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import scss from "./MovieCards.module.scss";
 import { useSelector } from "react-redux";
 import MoviesCard from "../MoviesCard/MoviesCard";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function MoviePopularCards(props) {
   const linksMas = {
@@ -29,7 +32,7 @@ function MoviePopularCards(props) {
   };
 
   // ! states
-  const [newValidate, setNewValidate] = useState(false);
+  const [newValidate, setNewValidate] = useState(true);
   const [popValidate, setpopValidate] = useState(false);
   const [watchValidate, setwatchValidate] = useState(false);
   const [recValidate, setrecValidate] = useState(false);
@@ -42,7 +45,15 @@ function MoviePopularCards(props) {
   const reck = movies.filter((el) => el.genre_ids.some((e) => e == 27));
   const top = movies.filter((el) => el.vote_average > 7.0);
 
-  console.log(linksMas);
+  let settings = {
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+  };
 
   return (
     <div id={scss.MoviePopularCards}>
@@ -105,47 +116,93 @@ function MoviePopularCards(props) {
               {linksMas.to.label}
             </Link>
           </div>
-
-          {newValidate ? (
-            <div className={scss.MoviePopularCardsBlock}>
-              {newMovie.map((el) => (
-                <MoviesCard el={el} key={el.id} />
-              ))}
-            </div>
-          ) : null}
-          {popValidate ? (
-            <div className={scss.MoviePopularCardsBlock}>
-              {movies.map((el) => (
-                <MoviesCard el={el} key={el.id} />
-              ))}
-            </div>
-          ) : null}
-          {watchValidate ? (
-            <div className={scss.MoviePopularCardsBlock}>
-              {watch.length ? (
-                watch.map((el) => <MoviesCard el={el} key={el.id} />)
+          <div className="">
+            {newValidate ? (
+              newMovie.length ? (
+                <div className={scss.MoviePopularCardsBlock}>
+                  <Slider {...settings}>
+                    {newMovie.map((el) => (
+                      <MoviesCard el={el} key={el.id} />
+                    ))}
+                  </Slider>
+                </div>
               ) : (
                 <img
-                  src="https://static.thenounproject.com/png/2998497-200.png"
+                  className={scss.MoviePopularCardsBlockNoMovie}
+                  src="https://cdn0.iconfinder.com/data/icons/movie-basic-colored/48/Cinema_Movie_Basics_Artboard_47-512.png"
                   alt=""
                 />
-              )}
-            </div>
-          ) : null}
-          {topValidate ? (
-            <div className={scss.MoviePopularCardsBlock}>
-              {top.map((el) => (
-                <MoviesCard el={el} key={el.id} />
-              ))}
-            </div>
-          ) : null}
-          {recValidate ? (
-            <div className={scss.MoviePopularCardsBlock}>
-              {reck.map((el) => (
-                <MoviesCard el={el} key={el.id} />
-              ))}
-            </div>
-          ) : null}
+              )
+            ) : null}
+            {popValidate ? (
+              movies.length ? (
+                <div className={scss.MoviePopularCardsBlock}>
+                  <Slider {...settings}>
+                    {movies.map((el) => (
+                      <MoviesCard el={el} key={el.id} />
+                    ))}
+                  </Slider>
+                </div>
+              ) : (
+                <img
+                  className={scss.MoviePopularCardsBlockNoMovie}
+                  src="https://cdn0.iconfinder.com/data/icons/movie-basic-colored/48/Cinema_Movie_Basics_Artboard_47-512.png"
+                  alt=""
+                />
+              )
+            ) : null}
+            {watchValidate ? (
+              watch.length ? (
+                <div className={scss.MoviePopularCardsBlock}>
+                  <Slider {...settings}>
+                    {watch.map((el) => (
+                      <MoviesCard el={el} key={el.id} />
+                    ))}
+                  </Slider>
+                </div>
+              ) : (
+                <img
+                  className={scss.MoviePopularCardsBlockNoMovie}
+                  src="https://cdn0.iconfinder.com/data/icons/movie-basic-colored/48/Cinema_Movie_Basics_Artboard_47-512.png"
+                  alt=""
+                />
+              )
+            ) : null}
+            {topValidate ? (
+              top.length ? (
+                <div className={scss.MoviePopularCardsBlock}>
+                  <Slider {...settings}>
+                    {top.map((el) => (
+                      <MoviesCard el={el} key={el.id} />
+                    ))}
+                  </Slider>
+                </div>
+              ) : (
+                <img
+                  className={scss.MoviePopularCardsBlockNoMovie}
+                  src="https://cdn0.iconfinder.com/data/icons/movie-basic-colored/48/Cinema_Movie_Basics_Artboard_47-512.png"
+                  alt=""
+                />
+              )
+            ) : null}
+            {recValidate ? (
+              reck.length ? (
+                <div className={scss.MoviePopularCardsBlock}>
+                  <Slider {...settings}>
+                    {reck.map((el) => (
+                      <MoviesCard el={el} key={el.id} />
+                    ))}
+                  </Slider>
+                </div>
+              ) : (
+                <img
+                  className={scss.MoviePopularCardsBlockNoMovie}
+                  src="https://cdn0.iconfinder.com/data/icons/movie-basic-colored/48/Cinema_Movie_Basics_Artboard_47-512.png"
+                  alt=""
+                />
+              )
+            ) : null}
+          </div>
         </div>
       </div>
     </div>
