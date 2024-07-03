@@ -2,8 +2,11 @@ import React, { useEffect } from "react";
 import scss from "./Home.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovie } from "../../features/actionCreators/getMovie";
-import MoviesCards from "../../components/MoviesCards/MoviesCards";
+
+import SliderMovie from "../../components/SliderMovie/SliderMovie";
+import MoviePopularCards from "../../components/MoviesCards/MoviesCards";
 import Search from "../../components/Search/Search";
+
 
 function Home(props) {
   const dispatch = useDispatch();
@@ -11,7 +14,7 @@ function Home(props) {
   const { movies } = useSelector((s) => s.movie);
 
   useEffect(() => {
-    dispatch(getMovie("popular"));
+    dispatch(getMovie("popular", 5));
   }, []);
 
   return (
@@ -22,8 +25,12 @@ function Home(props) {
             <Search />
           </section>
           <section>
-            <MoviesCards />
+            <MoviePopularCards />
           </section>
+          <section>
+            <center>
+              <SliderMovie />
+            </center>
         </div>
       </div>
     </div>

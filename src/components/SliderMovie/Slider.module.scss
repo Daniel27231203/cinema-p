@@ -1,0 +1,29 @@
+.sliderMovie {
+  padding: 30px;
+  background: #121010;
+  width: 70%;
+  .sliderMovieBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    .sliderText {
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+      gap: 20px;
+      p {
+        text-align: start;
+        color: white;
+        width: 400px;
+      }
+      button {
+        padding: 10px 30px;
+        background: red;
+        color: white;
+        border-radius: 15px;
+        border: 2px solid white;
+      }
+    }
+  }
+}
