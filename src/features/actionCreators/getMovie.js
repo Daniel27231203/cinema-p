@@ -1,5 +1,6 @@
 import axios from "axios";
-import { getMovies, search } from "../slices/movieSlice";
+import { genres, getMovies, search } from "../slices/movieSlice";
+import { useDispatch } from "react-redux";
 
 const key = "acbae6bf5e4a8680dd07ce2aaf7400ad";
 export const API = `https://api.themoviedb.org/3`;
@@ -29,5 +30,19 @@ export const searchMovie = (title, page) => {
       }
     );
     dispatch(search(data.results));
+  };
+};
+
+export const getGenre = (id, page) => {
+  return async (dispatch) => {
+    let { data } = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=ru-RU&with_genres=${id}`,
+      {
+        params: {
+          page: page,
+        },
+      }
+    );
+    dispatch(genres(data));
   };
 };

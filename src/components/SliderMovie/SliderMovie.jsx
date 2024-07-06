@@ -36,9 +36,17 @@ function SliderMovie(props) {
                 alt=""
               />
               <div className={scss.sliderText}>
-                <div className="">
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "start",
+                    gap: "20px",
+                  }}
+                  className=""
+                >
                   <h1>{el.title}</h1>
-                  <span></span>
+                  <span>дата выпуска: {el.release_date}</span>
                 </div>
                 <div className="">
                   <h4></h4>
