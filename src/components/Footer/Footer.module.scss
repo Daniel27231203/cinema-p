@@ -1,0 +1,36 @@
+footer {
+  padding: 40px 0;
+  background: #121010;
+  margin-top: 50px;
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    .footerCard {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      h1 {
+        font-size: 20px;
+      }
+      .footerCardIcons {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 60px;
+        a {
+          padding: 8px;
+          background: orangered;
+          border-radius: 50%;
+        }
+      }
+      button {
+        padding: 10px 30px;
+        background: orangered;
+        color: white;
+        border-radius: 15px;
+      }
+    }
+  }
+}
