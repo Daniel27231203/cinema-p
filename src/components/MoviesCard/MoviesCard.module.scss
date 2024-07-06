@@ -15,6 +15,9 @@
     height: 100px;
     color: white;
     font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: wrap;
   }
   span {
     color: white;

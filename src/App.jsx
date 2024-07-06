@@ -8,7 +8,6 @@ function App(props) {
     <div className="app">
       <Header />
       <MainRoutes />
-
       <Footer />
     </div>
   );

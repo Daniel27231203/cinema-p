@@ -7,7 +7,6 @@ import SliderMovie from "../../components/SliderMovie/SliderMovie";
 import MoviePopularCards from "../../components/MoviesCards/MoviesCards";
 import Search from "../../components/Search/Search";
 
-
 function Home(props) {
   const dispatch = useDispatch();
 
@@ -27,10 +26,16 @@ function Home(props) {
           <section>
             <MoviePopularCards />
           </section>
-          <section>
+          <section
+            style={{
+              padding: "60px 0",
+            }}
+          >
             <center>
               <SliderMovie />
             </center>
+          </section>
+          <section></section>
         </div>
       </div>
     </div>
