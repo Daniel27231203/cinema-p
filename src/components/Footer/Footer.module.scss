@@ -13,6 +13,10 @@ footer {
       gap: 40px;
       h1 {
         font-size: 20px;
+        cursor: pointer;
+      }
+      p {
+        cursor: pointer;
       }
       .footerCardIcons {
         display: flex;
