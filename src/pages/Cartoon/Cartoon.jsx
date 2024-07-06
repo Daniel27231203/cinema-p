@@ -1,7 +1,13 @@
 import React from "react";
 import scss from "./Cartoon.module.scss";
 function Cartoon(props) {
-  return <div>cas</div>;
+  return (
+    <div>
+      <div className="container">
+        <div className=""></div>
+      </div>
+    </div>
+  );
 }
 
 export default Cartoon;

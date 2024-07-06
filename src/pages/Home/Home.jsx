@@ -23,7 +23,6 @@ function Home() {
               </center>
             </section>
           </div>
-
         </div>
       </div>
     </>
