@@ -4,6 +4,7 @@ import SliderMovie from "../../components/SliderMovie/SliderMovie";
 import MoviePopularCards from "../../components/MoviesCards/MoviesCards";
 import Search from "../../components/Search/Search";
 import RandomMovie from "../../components/RandomMovie/RandomMovie";
+import Subscription from "../../components/Subscription/Subscription";
 function Home() {
   return (
     <>
@@ -24,6 +25,10 @@ function Home() {
             </section>
           </div>
         </div>
+        <section>
+          {/* . */}
+          <Subscription />
+        </section>
       </div>
     </>
   );
