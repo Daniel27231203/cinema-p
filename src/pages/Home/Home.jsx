@@ -4,7 +4,6 @@ import SliderMovie from "../../components/SliderMovie/SliderMovie";
 import MoviePopularCards from "../../components/MoviesCards/MoviesCards";
 import Search from "../../components/Search/Search";
 import RandomMovie from "../../components/RandomMovie/RandomMovie";
-
 function Home() {
   return (
     <>
@@ -24,6 +23,7 @@ function Home() {
               </center>
             </section>
           </div>
+
         </div>
       </div>
     </>
