@@ -1,8 +1,8 @@
 import axios from "axios";
 import { getMovies, search } from "../slices/movieSlice";
 
-const key = "374ca72f94e839d20650b216894720a8";
-export const API = `https://api.themoviedb.org/3/`;
+const key = "acbae6bf5e4a8680dd07ce2aaf7400ad";
+export const API = `https://api.themoviedb.org/3`;
 
 export function getMovie(path, page) {
   return async (dispatch) => {
