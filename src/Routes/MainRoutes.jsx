@@ -4,6 +4,7 @@ import Movie from "../pages/Movie/Movie";
 import Serial from "../pages/Serial/Serial";
 import { Route, Routes } from "react-router-dom";
 import Cartoon from "../pages/Cartoon/Cartoon";
+import Detail from "../pages/Detail/Detail";
 
 function MainRoutes() {
   const Public = [
@@ -26,6 +27,11 @@ function MainRoutes() {
       link: "/cartoon",
       element: <Cartoon />,
       id: 4,
+    },
+    {
+      link: "/detail/:id",
+      element: <Detail />,
+      id: 5,
     },
   ];
   return (

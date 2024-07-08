@@ -7,7 +7,7 @@ function MoviesCard({ el }) {
   return (
     <div
       onClick={() => {
-        nav("/detail");
+        nav(`/detail/${el.id}`);
       }}
       style={{ position: "relative", cursor: "pointer" }}
     >
