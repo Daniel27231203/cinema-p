@@ -8,16 +8,17 @@ import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
 import { getGenre } from "../../features/actionCreators/getMovie";
 import MoviesCard from "../../components/MoviesCard/MoviesCard";
+import Loader from "../../components/Loader/Loader";
 
 function Cartoon(props) {
   const dispatch = useDispatch();
-  const { genre } = useSelector((s) => s.movie);
+  const { genre, loading } = useSelector((s) => s.movie);
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = genre.total_pages;
   console.log(genre, "results");
 
   useEffect(() => {
-    dispatch(getGenre("16" || "10763", currentPage));
+    dispatch(getGenre("16" || "10763", currentPage, "movie"));
   }, [currentPage]);
 
   let settings = {
@@ -29,6 +30,8 @@ function Cartoon(props) {
     autoplay: true,
     autoplaySpeed: 5000,
   };
+
+  if (loading) return <Loader />;
 
   return (
     <div id={scss.cartoon}>

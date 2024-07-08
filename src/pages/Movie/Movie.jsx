@@ -31,7 +31,8 @@ function Movie(props) {
           "10765" ||
           "10768" ||
           "37",
-        currentPage
+        currentPage,
+        "movie"
       )
     );
   }, [currentPage]);

@@ -43,7 +43,7 @@ function MoviePopularCards(props) {
   const { allMovie } = useSelector((s) => s.movie);
 
   useEffect(() => {
-    dispatch(getAllMovie("popular", 1));
+    dispatch(getAllMovie("movie/popular", 1));
   }, []);
 
   console.log("mov", allMovie);
