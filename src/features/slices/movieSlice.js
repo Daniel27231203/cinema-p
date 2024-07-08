@@ -24,8 +24,13 @@ export const movieSlice = createSlice({
     genres(state, action) {
       state.genre = action.payload;
     },
+    setLoading(state, action) {
+      state.loading = action.payload;
+    },
   },
 });
 
-export const { getMovies, getAllMovies, search, genres } = movieSlice.actions;
+
+export const { getMovies, search, genres, setLoading, getAllMovies } = movieSlice.actions;
+
 export default movieSlice.reducer;

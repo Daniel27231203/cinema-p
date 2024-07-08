@@ -40,6 +40,11 @@
         font-weight: 500;
         line-height: 160.4%;
         margin: 20px 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .btn {
         margin: 12px 0;

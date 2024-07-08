@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import scss from "./Home.module.scss";
 import SliderMovie from "../../components/SliderMovie/SliderMovie";
 import MoviePopularCards from "../../components/MoviesCards/MoviesCards";
