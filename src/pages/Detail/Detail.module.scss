@@ -1,4 +1,73 @@
 #detail {
+
+  #detailHeader {
+    padding: 150px 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    margin-top: -130px;
+    z-index: -1;
+    .detailHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      img {
+        width: 300px;
+        border-radius: 15px;
+        box-shadow: 1px 1px 20px 6px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 1px 1px 20px 6px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 1px 1px 20px 6px rgba(0, 0, 0, 0.75);
+      }
+      .detailHeaderGanre {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        span {
+          color: white;
+          font-size: 20px;
+          cursor: pointer;
+
+          &:hover {
+            color: orangered;
+            transition: 0.2s ease-in-out;
+            cursor: pointer;
+          }
+        }
+      }
+      .detailHeaderTitle {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        p {
+          width: 800px;
+          color: white;
+          text-shadow: 1px 5px 5px rgba(0, 0, 0, 0.6);
+          font-size: 25px;
+          font-weight: 900;
+        }
+        h1 {
+          text-shadow: 1px 5px 5px rgba(0, 0, 0, 0.6);
+          font-size: 45px;
+          font-weight: 1000;
+          width: 450px;
+          color: white;
+        }
+        .detailHeaderTitleBtn {
+          display: flex;
+          align-items: center;
+          gap: 40px;
+          button {
+            padding: 10px 30px;
+            background: orangered;
+            color: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+          }
+        }
+      }
+
   #video {
     padding: 40px 0;
     .tariler {
@@ -13,6 +82,7 @@
       font-size: 30px;
       color: #fff;
       font-weight: 400;
+
     }
   }
 }

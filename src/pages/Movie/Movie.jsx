@@ -8,10 +8,11 @@ import MoviesCard from "../../components/MoviesCard/MoviesCard";
 import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
 import { getGenre } from "../../features/actionCreators/getMovie";
+import Loader from "../../components/Loader/Loader";
 
 function Movie(props) {
   const dispatch = useDispatch();
-  const { genre } = useSelector((s) => s.movie);
+  const { genre, loading } = useSelector((s) => s.movie);
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = genre.total_pages;
   console.log(genre, "results");
@@ -46,6 +47,7 @@ function Movie(props) {
     autoplay: true,
     autoplaySpeed: 5000,
   };
+  if (loading) return <Loader />;
 
   return (
     <div id={scss.movie}>
