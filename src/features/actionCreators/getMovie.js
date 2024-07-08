@@ -88,11 +88,11 @@ export const getGenre = (id, page, or) => {
   };
 };
 // ! DETAIL FUNC
-export function getOneMovie(id) {
+export function getOneMovie(id, videos) {
   return async (dispatch) => {
     try {
       dispatch(setLoading(true));
-      let { data } = await axios.get(`${API}/movie/${id}`, {
+      let { data } = await axios.get(`${API}/movie/${id}${videos}`, {
         params: {
           api_key: key,
           language: "ru-RU",
