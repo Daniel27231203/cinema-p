@@ -1,7 +1,13 @@
 import axios from "axios";
 
-import { genres, getAllMovies, getMovies, search, setLoading } from "../slices/movieSlice";
-
+import {
+  genres,
+  getAllMovies,
+  getMovies,
+  getOne,
+  search,
+  setLoading,
+} from "../slices/movieSlice";
 
 const key = "acbae6bf5e4a8680dd07ce2aaf7400ad";
 export const API = `https://api.themoviedb.org/3`;
@@ -79,3 +85,22 @@ export const getGenre = (id, page) => {
     }
   };
 };
+// ! DETAIL FUNC
+export function getOneMovie(id) {
+  return async (dispatch) => {
+    try {
+      dispatch(setLoading(true));
+      let { data } = await axios.get(`${API}/movie/${id}`, {
+        params: {
+          api_key: key,
+          language: "ru-RU",
+        },
+      });
+      dispatch(getOne(data));
+    } catch (error) {
+      console.log(error.message);
+      dispatch(setLoading(false));
+    }
+    dispatch(setLoading(false));
+  };
+}
