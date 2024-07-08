@@ -4,6 +4,7 @@ import {
   genres,
   getAllMovies,
   getMovies,
+  getOne,
   search,
   setLoading,
 } from "../slices/movieSlice";
@@ -86,3 +87,22 @@ export const getGenre = (id, page, or) => {
     dispatch(setLoading(false));
   };
 };
+// ! DETAIL FUNC
+export function getOneMovie(id) {
+  return async (dispatch) => {
+    try {
+      dispatch(setLoading(true));
+      let { data } = await axios.get(`${API}/movie/${id}`, {
+        params: {
+          api_key: key,
+          language: "ru-RU",
+        },
+      });
+      dispatch(getOne(data));
+    } catch (error) {
+      console.log(error.message);
+      dispatch(setLoading(false));
+    }
+    dispatch(setLoading(false));
+  };
+}

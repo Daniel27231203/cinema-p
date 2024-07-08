@@ -1,6 +1,6 @@
 import scss from "./RandomMovie.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getMovie } from "../../features/actionCreators/getMovie";
+import { getMovie, getOneMovie } from "../../features/actionCreators/getMovie";
 import React, { useEffect, useState } from "react";
 import { MdArrowForwardIos } from "react-icons/md";
 import Loader from "../Loader/Loader";
