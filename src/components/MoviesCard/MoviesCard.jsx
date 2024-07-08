@@ -1,6 +1,5 @@
 import React from "react";
 import scss from "./MoviesCard.module.scss";
-import { useSelector } from "react-redux";
 
 function MoviesCard({ el }) {
   return (

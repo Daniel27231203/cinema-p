@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import scss from "./MovieCards.module.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { getAllMovie, getMovie } from "../../features/actionCreators/getMovie";
 
 function MoviePopularCards(props) {
+  const dispatch = useDispatch();
   const linksMas = {
     new: {
       value: "New",
@@ -38,12 +40,18 @@ function MoviePopularCards(props) {
   const [recValidate, setrecValidate] = useState(false);
   const [topValidate, settopValidate] = useState(false);
 
-  const { movies } = useSelector((s) => s.movie);
+  const { allMovie } = useSelector((s) => s.movie);
 
-  const newMovie = movies.filter((el) => el.release_date.includes("2024"));
-  const watch = movies.filter((el) => el.video == true);
-  const reck = movies.filter((el) => el.genre_ids.some((e) => e == 27));
-  const top = movies.filter((el) => el.vote_average > 7.0);
+  useEffect(() => {
+    dispatch(getAllMovie("popular", 1));
+  }, []);
+
+  console.log("mov", allMovie);
+
+  const newMovie = allMovie.filter((el) => el.release_date.includes("2024"));
+  const watch = allMovie.filter((el) => el.video == true);
+  const reck = allMovie.filter((el) => el.genre_ids.some((e) => e == 27));
+  const top = allMovie.filter((el) => el.vote_average > 7.0);
 
   let settings = {
     dots: true,
@@ -135,10 +143,10 @@ function MoviePopularCards(props) {
               )
             ) : null}
             {popValidate ? (
-              movies.length ? (
+              allMovie.length ? (
                 <div className={scss.MoviePopularCardsBlock}>
                   <Slider {...settings}>
-                    {movies.map((el) => (
+                    {allMovie.map((el) => (
                       <MoviesCard el={el} key={el.id} />
                     ))}
                   </Slider>

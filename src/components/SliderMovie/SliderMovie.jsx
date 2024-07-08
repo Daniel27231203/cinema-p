@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from "react-router-dom";
 
 function SliderMovie(props) {
-  const { movies } = useSelector((s) => s.movie);
+  const { allMovie } = useSelector((s) => s.movie);
   let nav = useNavigate();
 
   let settings = {
@@ -20,15 +20,10 @@ function SliderMovie(props) {
     autoplaySpeed: 5000,
   };
 
-  let genre = movies.filter((el) => el.genre_ids.map((e) => e == 16));
-
-  console.log(genre, "genre");
-  console.log(movies);
-
   return (
     <div className={scss.sliderMovie}>
       <Slider {...settings}>
-        {movies.map((el) => (
+        {allMovie.map((el) => (
           <div>
             <div className={scss.sliderMovieBlock}>
               <img
