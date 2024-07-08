@@ -1,13 +1,15 @@
 import React from "react";
 import scss from "./MoviesCard.module.scss";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getOneMovie } from "../../features/actionCreators/getMovie";
 
 function MoviesCard({ el }) {
   let nav = useNavigate();
   return (
     <div
       onClick={() => {
-        nav("/detail");
+        nav(`/detail/${el.id}`);
       }}
       style={{ position: "relative", cursor: "pointer" }}
     >
