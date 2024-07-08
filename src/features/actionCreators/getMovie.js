@@ -1,8 +1,23 @@
 import axios from "axios";
-import { genres, getMovies, search, setLoading } from "../slices/movieSlice";
+
+import { genres, getAllMovies, getMovies, search, setLoading } from "../slices/movieSlice";
+
 
 const key = "acbae6bf5e4a8680dd07ce2aaf7400ad";
 export const API = `https://api.themoviedb.org/3`;
+
+export function getAllMovie(path, page) {
+  return async (dispatch) => {
+    let { data } = await axios.get(`${API}/movie/${path}`, {
+      params: {
+        api_key: key,
+        language: "ru-RU",
+        page: page,
+      },
+    });
+    dispatch(getAllMovies(data.results));
+  };
+}
 
 export function getMovie(path, page) {
   return async (dispatch) => {

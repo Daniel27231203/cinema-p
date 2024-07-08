@@ -1,0 +1,56 @@
+#cartoonUpBlock {
+  padding: 40px 0;
+  .cartoonUpBlock {
+    .cartoonUpBlockCard {
+      color: rgb(205, 203, 203);
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 40px;
+      img {
+        box-shadow: 1px 1px 20px 6px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 1px 1px 20px 6px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 1px 1px 20px 6px rgba(0, 0, 0, 0.75);
+      }
+      .cartoonUpBlockTitle {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        h1 {
+          text-shadow: 1px 5px 5px rgba(0, 0, 0, 0.6);
+          font-size: 45px;
+          font-weight: 1000;
+          width: 450px;
+        }
+        p {
+          font-size: 25px;
+          font-weight: 900;
+          width: 500px;
+          text-shadow: 1px 5px 5px rgba(0, 0, 0, 0.6);
+        }
+        button {
+          padding: 10px 30px;
+          background: orangered;
+          color: white;
+          border-radius: 15px;
+        }
+      }
+    }
+  }
+}
+
+#cartoonFilms {
+  padding: 40px 0;
+  .cartoonFilms {
+    h1 {
+      color: white;
+    }
+    .cartoonFilmsCards {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}
