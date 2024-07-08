@@ -2,11 +2,11 @@ import scss from "./Search.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { searchMovie } from "../../features/actionCreators/getMovie";
 import MoviesCard from "../MoviesCard/MoviesCard";
+import Loader from "../Loader/Loader";
 const Search = () => {
-  const { search } = useSelector((state) => state.movie);
+  const { search, loading } = useSelector((state) => state.movie);
   const dispatch = useDispatch();
-
-  console.log(search, "search");
+  if (loading) return <Loader />;
 
   return (
     <div className={scss.search}>

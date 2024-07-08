@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMovie } from "../../features/actionCreators/getMovie";
 import React, { useEffect, useState } from "react";
 import { MdArrowForwardIos } from "react-icons/md";
+import Loader from "../Loader/Loader";
 
 const RandomMovie = () => {
-  const { movies } = useSelector((state) => state.movie);
+  const { movies, loading } = useSelector((state) => state.movie);
   let [nextMovie, setNextMovie] = useState(false);
   const dispatch = useDispatch();
 
@@ -13,8 +14,11 @@ const RandomMovie = () => {
 
   useEffect(() => {
     dispatch(getMovie("popular", page));
-  }, [nextMovie]);
+  }, [nextMovie, dispatch]);
   const random = movies[Math.floor(Math.random() * 20)];
+
+  if (loading) return <Loader />;
+
   return (
     <div
       className={scss.RandomMovie}
@@ -30,7 +34,7 @@ const RandomMovie = () => {
       <section className={scss.random}>
         <div className={scss.detail}>
           <h2>{random?.title}</h2>
-          <p>{random?.overview.slice(0, 500)}...</p>
+          <p>{random?.overview}</p>
           <div className={scss.btn}>
             <button>Смотреть</button>
           </div>
