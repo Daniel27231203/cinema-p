@@ -7,6 +7,8 @@ const initialState = {
   allMovie: [],
   genre: [],
   search: [],
+  video: [],
+  actors: [],
   loading: false,
   error: "",
 };
@@ -33,7 +35,11 @@ export const movieSlice = createSlice({
       state.detail = action.payload;
     },
     getOneVideo(state, action) {
-      state.videos = action.payload;
+
+      state.video = action.payload;
+    },
+    getActor(state, action) {
+      state.actors = action.payload;
     },
   },
 });
@@ -45,6 +51,9 @@ export const {
   setLoading,
   getAllMovies,
   getOne,
+
+  getActor,
+
   getOneVideo,
 } = movieSlice.actions;
 

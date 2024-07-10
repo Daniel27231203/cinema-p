@@ -4,12 +4,13 @@ import { getMovie, getOneMovie } from "../../features/actionCreators/getMovie";
 import React, { useEffect, useState } from "react";
 import { MdArrowForwardIos } from "react-icons/md";
 import Loader from "../Loader/Loader";
+import { useNavigate } from "react-router-dom";
 
 const RandomMovie = () => {
   const { movies, loading } = useSelector((state) => state.movie);
   let [nextMovie, setNextMovie] = useState(false);
   const dispatch = useDispatch();
-
+  let nav = useNavigate();
   let page = Math.floor(Math.random() * 20);
 
   useEffect(() => {
@@ -36,7 +37,13 @@ const RandomMovie = () => {
           <h2>{random?.title}</h2>
           <p>{random?.overview}</p>
           <div className={scss.btn}>
-            <button>Смотреть</button>
+            <button
+              onClick={() => {
+                nav(`/detail/${random.id}`);
+              }}
+            >
+              Смотреть
+            </button>
           </div>
         </div>
         <h1

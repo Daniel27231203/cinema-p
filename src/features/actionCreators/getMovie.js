@@ -2,6 +2,7 @@ import axios from "axios";
 
 import {
   genres,
+  getActor,
   getAllMovies,
   getMovies,
   getOne,
@@ -89,11 +90,11 @@ export const getGenre = (id, page, or) => {
   };
 };
 // ! DETAIL FUNC
-export function getOneMovie(id, videos) {
+export function getOneMovie(id) {
   return async (dispatch) => {
     try {
       dispatch(setLoading(true));
-      let { data } = await axios.get(`${API}/movie/${id}${videos}`, {
+      let { data } = await axios.get(`${API}/movie/${id}`, {
         params: {
           api_key: key,
           language: "ru-RU",
@@ -108,3 +109,43 @@ export function getOneMovie(id, videos) {
     dispatch(setLoading(false));
   };
 }
+
+export function getOneVideosMovie(id, videos) {
+  return async (dispatch) => {
+    try {
+      dispatch(setLoading(true));
+      let { data } = await axios.get(`${API}/movie/${id}${videos}`, {
+        params: {
+          api_key: key,
+          language: "ru-RU",
+        },
+      });
+      dispatch(getOneVideo(data));
+    } catch (error) {
+      console.log(error.message);
+      dispatch(setLoading(false));
+    }
+    dispatch(setLoading(false));
+  };
+}
+
+export function getOneActorsMovie(id) {
+  return async (dispatch) => {
+    try {
+      dispatch(setLoading(true));
+      let { data } = await axios.get(`${API}/movie/${id}/credits`, {
+        params: {
+          api_key: key,
+          language: "ru-RU",
+        },
+      });
+      dispatch(getActor(data.cast));
+    } catch (error) {
+      console.log(error.message);
+      dispatch(setLoading(false));
+    }
+    dispatch(setLoading(false));
+  };
+}
+
+// https://api.themoviedb.org/3/person/{person_id}?api_key=YOUR_API_KEY

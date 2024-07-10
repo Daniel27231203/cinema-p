@@ -1,15 +1,15 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import MainRoutes from "./Routes/MainRoutes";
 
 function App() {
   return (
-    <div className="app">
+    <Fragment>
       <Header />
       <MainRoutes />
       <Footer />
-    </div>
+    </Fragment>
   );
 }
 
