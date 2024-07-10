@@ -5,6 +5,7 @@ import {
   getAllMovies,
   getMovies,
   getOne,
+  getOneVideo,
   search,
   setLoading,
 } from "../slices/movieSlice";
@@ -99,6 +100,7 @@ export function getOneMovie(id, videos) {
         },
       });
       dispatch(getOne(data));
+      dispatch(getOneVideo(data));
     } catch (error) {
       console.log(error.message);
       dispatch(setLoading(false));

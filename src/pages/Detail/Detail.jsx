@@ -6,20 +6,24 @@ import { getOneMovie } from "../../features/actionCreators/getMovie";
 
 import { FaPlay } from "react-icons/fa6";
 import { MdOutlineSaveAlt } from "react-icons/md";
+import Loader from "../../components/Loader/Loader";
 
 function Detail(props) {
   const dispatch = useDispatch();
 
-  const { detail } = useSelector((s) => s.movie);
+  const { detail, videos, loading } = useSelector((s) => s.movie);
   const { id } = useParams();
   useEffect(() => {
-    dispatch(getOneMovie(id));
     dispatch(getOneMovie(id, "/videos"));
+    dispatch(getOneMovie(id));
   }, [id]);
+
+  console.log(detail);
+
+  if (loading) return <Loader />;
 
   return (
     <section id={scss.detail}>
-
       <section
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${detail?.backdrop_path})`,
@@ -40,8 +44,8 @@ function Detail(props) {
             <div className={scss.detailHeaderTitle}>
               <h1>{detail?.title}</h1>
               <div className={scss.detailHeaderGanre}>
-                {detail.genres.map((el) => (
-                  <span key={el.id}>{el.name}</span>
+                {detail?.genres?.map((el) => (
+                  <span key={el?.id}>{el?.name}</span>
                 ))}
               </div>
               <p>{detail?.overview}</p>
@@ -65,15 +69,15 @@ function Detail(props) {
       <section></section>
 
       {/* !trailer section */}
-      {detail?.results?.length ? (
+      {videos?.results?.length ? (
         <section id={scss.video}>
           <div className="container">
             <h2>Трейлер</h2>
             <div className={scss.tariler}>
-              {detail?.results?.map((el, index) => (
+              {videos?.results?.map((el, index) => (
                 <div key={index} className={scss.videoCard}>
                   <iframe
-                    src={`https://www.youtube.com/embed/${el.key}`}
+                    src={`https://www.youtube.com/embed/${el?.key}`}
                     title="video"
                     width="800"
                     height="500"
@@ -86,7 +90,6 @@ function Detail(props) {
         </section>
       ) : null}
       {/* !trailer section */}
-
     </section>
   );
 }
