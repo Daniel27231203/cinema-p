@@ -1,25 +1,32 @@
-import React, { useEffect } from "react";
+import React, { act, useEffect } from "react";
 import scss from "./Detail.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getOneMovie } from "../../features/actionCreators/getMovie";
+import {
+  getOneActorsMovie,
+  getOneMovie,
+} from "../../features/actionCreators/getMovie";
 
 import { FaPlay } from "react-icons/fa6";
 import { MdOutlineSaveAlt } from "react-icons/md";
+import Trailer from "../../components/Trailer/Trailer";
 
 function Detail(props) {
   const dispatch = useDispatch();
 
-  const { detail } = useSelector((s) => s.movie);
+  const { detail, actors } = useSelector((s) => s.movie);
   const { id } = useParams();
+
   useEffect(() => {
     dispatch(getOneMovie(id));
-    dispatch(getOneMovie(id, "/videos"));
+    dispatch(getOneActorsMovie(id));
   }, [id]);
+
+  console.log(detail, "de");
+  console.log(actors, "actors");
 
   return (
     <section id={scss.detail}>
-
       <section
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${detail?.backdrop_path})`,
@@ -40,7 +47,7 @@ function Detail(props) {
             <div className={scss.detailHeaderTitle}>
               <h1>{detail?.title}</h1>
               <div className={scss.detailHeaderGanre}>
-                {detail.genres.map((el) => (
+                {detail?.genres?.map((el) => (
                   <span key={el.id}>{el.name}</span>
                 ))}
               </div>
@@ -62,31 +69,34 @@ function Detail(props) {
           </div>
         </div>
       </section>
-      <section></section>
 
       {/* !trailer section */}
-      {detail?.results?.length ? (
-        <section id={scss.video}>
-          <div className="container">
-            <h2>Трейлер</h2>
-            <div className={scss.tariler}>
-              {detail?.results?.map((el, index) => (
-                <div key={index} className={scss.videoCard}>
-                  <iframe
-                    src={`https://www.youtube.com/embed/${el.key}`}
-                    title="video"
-                    width="800"
-                    height="500"
-                    frameborder="0"
-                  ></iframe>
-                </div>
-              ))}
+      <Trailer />
+      {/* !trailer section */}
+
+      {/* Actors */}
+      <section id={scss.actors}>
+        <div className="container">
+          <div className={scss.actors}>
+            <h1>Актеры и Создатели!</h1>
+            <div className={scss.actorsCards}>
+              {actors?.map((actor) =>
+                actor.profile_path ? (
+                  <div key={actor.id} className={scss.actorsCard}>
+                    <img
+                      src={`https://media.themoviedb.org/t/p/w138_and_h175_face/${actor.profile_path}`}
+                      alt=""
+                    />
+                    <h2>{actor.name}</h2>
+                    <span>{actor.character}</span>
+                  </div>
+                ) : null
+              )}
             </div>
           </div>
-        </section>
-      ) : null}
-      {/* !trailer section */}
-
+        </div>
+      </section>
+      {/* Actors */}
     </section>
   );
 }
