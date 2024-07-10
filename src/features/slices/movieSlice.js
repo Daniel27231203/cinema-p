@@ -6,6 +6,8 @@ const initialState = {
   allMovie: [],
   genre: [],
   search: [],
+  video: [],
+  actors: [],
   loading: false,
   error: "",
 };
@@ -31,10 +33,24 @@ export const movieSlice = createSlice({
     getOne(state, action) {
       state.detail = action.payload;
     },
+    getOneVideo(state, action) {
+      state.video = action.payload;
+    },
+    getActor(state, action) {
+      state.actors = action.payload;
+    },
   },
 });
 
-export const { getMovies, search, genres, setLoading, getAllMovies, getOne } =
-  movieSlice.actions;
+export const {
+  getMovies,
+  search,
+  genres,
+  setLoading,
+  getAllMovies,
+  getOne,
+  getActor,
+  getOneVideo,
+} = movieSlice.actions;
 
 export default movieSlice.reducer;

@@ -75,7 +75,7 @@ function Movie(props) {
                       <p>{el.overview.slice(0, 100)}</p>
                       <button
                         onClick={() => {
-                          nav("/detail");
+                          nav(`/detail/${el.id}`);
                         }}
                       >
                         Смотреть
