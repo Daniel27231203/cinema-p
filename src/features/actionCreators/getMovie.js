@@ -101,6 +101,7 @@ export function getOneMovie(id) {
         },
       });
       dispatch(getOne(data));
+      dispatch(getOneVideo(data));
     } catch (error) {
       console.log(error.message);
       dispatch(setLoading(false));

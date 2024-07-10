@@ -9,21 +9,28 @@ import {
 
 import { FaPlay } from "react-icons/fa6";
 import { MdOutlineSaveAlt } from "react-icons/md";
+import Loader from "../../components/Loader/Loader";
 import Trailer from "../../components/Trailer/Trailer";
+
 
 function Detail(props) {
   const dispatch = useDispatch();
 
-  const { detail, actors } = useSelector((s) => s.movie);
+  const { detail, videos, loading, actors } = useSelector((s) => s.movie);
+
   const { id } = useParams();
 
   useEffect(() => {
+
+
+
     dispatch(getOneMovie(id));
     dispatch(getOneActorsMovie(id));
   }, [id]);
 
-  console.log(detail, "de");
-  console.log(actors, "actors");
+  
+  if (loading) return <Loader />;
+  
 
   return (
     <section id={scss.detail}>
@@ -48,7 +55,8 @@ function Detail(props) {
               <h1>{detail?.title}</h1>
               <div className={scss.detailHeaderGanre}>
                 {detail?.genres?.map((el) => (
-                  <span key={el.id}>{el.name}</span>
+                  <span key={el?.id}>{el?.name}</span>
+
                 ))}
               </div>
               <p>{detail?.overview}</p>
@@ -71,6 +79,7 @@ function Detail(props) {
       </section>
 
       {/* !trailer section */}
+
       <Trailer />
       {/* !trailer section */}
 
