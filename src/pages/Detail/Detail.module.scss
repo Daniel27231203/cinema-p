@@ -66,8 +66,9 @@
           }
         }
       }
+    }
+  }
 
-  
   #actors {
     padding: 40px 0;
     .actors {
@@ -107,7 +108,6 @@
       .actorsCards::-webkit-scrollbar {
         display: none;
       }
-
     }
   }
 }
